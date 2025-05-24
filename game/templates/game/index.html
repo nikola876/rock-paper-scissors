@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Гра Камінь-Ножиці-Папір</title>
+    <link rel="stylesheet" href="{% static 'game/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Камінь - Ножиці - Папір</h1>
+
+        {% if user.is_authenticated %}
+            <p>Привіт, {{ user.username }}!
+                <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Вийти</button>
+                </form>
+                | <a href="/admin/">Адмінка</a>
+            </p>
+
+            <form method="get">
+                <button type="submit" name="choice" value="rock">🪨 Камінь</button>
+                <button type="submit" name="choice" value="paper">📄 Папір</button>
+                <button type="submit" name="choice" value="scissors">✂️ Ножиці</button>
+            </form>
+
+            {% if user_choice %}
+                <div class="result">
+                    <h2>Ваш вибір: {{ user_choice }}</h2>
+                    <h2>Вибір комп’ютера: {{ computer_choice }}</h2>
+                    <h2 class="outcome">{{ result }}</h2>
+                </div>
+            {% endif %}
+
+            <h3>🏆 Рейтинг гравців</h3>
+            <ul>
+                {% for player in scores %}
+                    <li>{{ player.user.username }}: {{ player.score }} очок</li>
+                {% empty %}
+                    <li>Поки що немає даних</li>
+                {% endfor %}
+            </ul>
+
+        {% else %}
+            <p>
+                <a href="{% url 'login' %}">Увійти</a> |
+                <a href="/admin/">Адмінка</a>
+            </p>
+        {% endif %}
+    </div>
+</body>
+</html>
