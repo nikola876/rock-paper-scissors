@@ -3,7 +3,7 @@
 
 * Створіть **порожню** папку на робочому столі, запустіть командний рядок і клонуйте репозиторій:
 
-      git clone https://github.com/ap75/game.git .
+      git clone https://github.com/nikola876/rock-paper-scissors.git
 
 * Створіть віртуальне оточення
 
