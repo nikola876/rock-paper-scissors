@@ -70,5 +70,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'game/static')]
 
 LOGIN_REDIRECT_URL = '/'
 
-# После logout будет использоваться шаблон registration/logged_out.html
-LOGOUT_REDIRECT_URL = '/'  # НЕ нужно, если ты используешь шаблон
+
+LOGOUT_REDIRECT_URL = '/'  
