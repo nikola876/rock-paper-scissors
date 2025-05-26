@@ -9,13 +9,11 @@ import random
 import os
 BASE_DIR = settings.BASE_DIR
 
-# 👇 Новый класс: форма регистрации
 class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
 
-# 👇 Основное игровое представление
 @login_required
 def game_view(request):
     choices = ['rock', 'paper', 'scissors']
